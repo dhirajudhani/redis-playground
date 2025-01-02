@@ -9,7 +9,7 @@ app.get('/',async (req, res) => {
 
     if(cacheValue) return res.json(JSON.parse(cacheValue))
     
-    const {data} = await axios.get('https://jsonplaceholder.typicode.com/todos')
+    const {data} = await axios.get('https://jsonplaceholder.typicode.com/names')
     await client.set('todos',JSON.stringify(data))
     await client.expire('todos', 30)
     return res.json({data})
